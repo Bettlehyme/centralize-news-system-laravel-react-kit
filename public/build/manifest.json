@@ -1,0 +1,105 @@
+{
+  "_feed-BERmjH1F.js": {
+    "file": "assets/feed-BERmjH1F.js",
+    "name": "feed",
+    "imports": [
+      "_layout-B527ElJ-.js",
+      "resources/js/app.tsx",
+      "_square-arrow-out-up-right-BEnrCFjP.js"
+    ]
+  },
+  "_layout-B527ElJ-.js": {
+    "file": "assets/layout-B527ElJ-.js",
+    "name": "layout",
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "_square-arrow-out-up-right-BEnrCFjP.js": {
+    "file": "assets/square-arrow-out-up-right-BEnrCFjP.js",
+    "name": "square-arrow-out-up-right",
+    "imports": [
+      "_layout-B527ElJ-.js"
+    ]
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-BAghibjF.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/js/app.tsx": {
+    "file": "assets/app-cgYOdWZy.js",
+    "name": "app",
+    "src": "resources/js/app.tsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/pages/news-page.tsx",
+      "resources/js/pages/news.tsx",
+      "resources/js/pages/source.tsx",
+      "resources/js/pages/sources.tsx"
+    ],
+    "css": [
+      "assets/app-BAghibjF.css"
+    ]
+  },
+  "resources/js/pages/news-page.tsx": {
+    "file": "assets/news-page-rlM5PDk3.js",
+    "name": "news-page",
+    "src": "resources/js/pages/news-page.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_layout-B527ElJ-.js",
+      "_square-arrow-out-up-right-BEnrCFjP.js"
+    ],
+    "css": [
+      "assets/app-BAghibjF.css"
+    ]
+  },
+  "resources/js/pages/news.tsx": {
+    "file": "assets/news-CQXJxHLA.js",
+    "name": "news",
+    "src": "resources/js/pages/news.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_feed-BERmjH1F.js",
+      "_layout-B527ElJ-.js",
+      "_square-arrow-out-up-right-BEnrCFjP.js"
+    ],
+    "css": [
+      "assets/app-BAghibjF.css"
+    ]
+  },
+  "resources/js/pages/source.tsx": {
+    "file": "assets/source-CYoAWc6O.js",
+    "name": "source",
+    "src": "resources/js/pages/source.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_feed-BERmjH1F.js",
+      "_layout-B527ElJ-.js",
+      "_square-arrow-out-up-right-BEnrCFjP.js"
+    ],
+    "css": [
+      "assets/app-BAghibjF.css"
+    ]
+  },
+  "resources/js/pages/sources.tsx": {
+    "file": "assets/sources-C_cutrTr.js",
+    "name": "sources",
+    "src": "resources/js/pages/sources.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
+      "_layout-B527ElJ-.js"
+    ],
+    "css": [
+      "assets/app-BAghibjF.css"
+    ]
+  }
+}
