@@ -3,7 +3,138 @@
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+/* Custom dark variant */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Fonts */
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Base elements */
+body, a, button, .btn-motion {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+
+a {
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--color-text);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.btn-motion {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Light mode variables */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #213547;
+  --color-link: #213547;
+  /* --color-link-hover: #ECB779; */
+  color-scheme: light dark;
+  scroll-behavior: smooth;
+}
+
+/* Dark mode variables */
+.dark:root {
+  --color-bg: #213547;
+  --color-text: #ffffff;
+  --color-link: #ffffff;
+  /* --color-link-hover: #facc15; */
+}
+/* Logo fade effect */
+.logo-fade {
+  @apply absolute transition-opacity duration-500;
+}
+
+.logo-light {
+  @apply opacity-100 dark:opacity-0;
+}
+
+.logo-dark {
+  @apply opacity-0 dark:opacity-100;
+}
+
+/* Header container background fade */
+.header-container {
+  @apply bg-white dark:bg-gray-900 transition-colors duration-500;
+}
+
+.header-inner {
+  @apply relative flex items-center justify-center h-14;
+}
+
+.truncate-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
