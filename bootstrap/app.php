@@ -14,8 +14,7 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )->withSchedule(function (Schedule $schedule) {
-        // Jalankan scraping setiap jam
-        $schedule->command('news:scrape')->hourly();
+        $schedule->command('news:scrape')->everyMinute();
     })
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->web(append: [
