@@ -22,7 +22,7 @@ Route::get('/sources', function () {
     );
 })->name('sources');
 
-Route::get('/sources/{source}', function ($source) {
+Route::get('/sources/{source}', function ($source, Request $request) {
     return Inertia::render('source', [
         'source' => $source,
         'seo' => [
@@ -42,11 +42,11 @@ Route::get('/news/title/{slug}', function ($slug, Request $request) {
         'canonicalUrl' => url()->current(),
         'seo' => [
             'title' => $article->title,
-            'description' => Str::limit(strip_tags($article->content), 150),
-            'image' => $article->image_url ?? asset('no-image.png'),
+            'description' => Str::limit(strip_tags($article->summary), 150),
+            'image' => $article->image ?? asset('no-image.png'),
             'url' => url()->current(),
         ],
-        'article' => $article, 
+        'article' => $article,
     ]);
 })->name('newsPage');
 
