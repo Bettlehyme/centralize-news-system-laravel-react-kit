@@ -4,20 +4,12 @@ import { Newspaper, Share, Share2, SquareArrowOutUpRight } from "lucide-react";
 import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState } from "react";
 import { Link } from "@inertiajs/react";
+import { NewsItem } from "@/types/types";
 
-export type FeedItem = {
-  id: number | string;
-  title: string;
-  summary: string;
-  image?: string;
-  source?: string;
-  pub_date?: string;
-  color?: string;
-  link?: string;
-}
+
 
 interface FeedSingleProps {
-  items: FeedItem[];
+  items: NewsItem[];
 }
 
 export default function FeedSingle({ items }: FeedSingleProps) {
@@ -32,8 +24,8 @@ export default function FeedSingle({ items }: FeedSingleProps) {
       alert("Sharing is not supported on this browser.");
     }
   };
-  const handleShareFeed = async (title: string, url?: string) => {
-    let shareUrl = `/news/title/${encodeURIComponent(title)}`;
+  const handleShareFeed = async (title: string, slug: string, url?: string) => {
+    let shareUrl = `/news/title/${encodeURIComponent(slug)}`;
     if (navigator.share) {
       try {
         await navigator.share({ title, url: shareUrl });
@@ -134,7 +126,7 @@ export default function FeedSingle({ items }: FeedSingleProps) {
                           className="flex flex-col items-end space-y-2"
                         >
                           <motion.button
-                            onClick={() => handleShareFeed(post.title, post.link)}
+                            onClick={() => handleShareFeed(post.title, post.slug, post.link)}
                             className=" w-15 h-15 px-4 py-2 shadow "
                             whileHover={{ scale: 1.05, color: '#fff', border: 'none' }}
                             whileInView={{ scale: 1, opacity: 1, outline: 'none', borderRadius: '50%', border: 'none' }}
