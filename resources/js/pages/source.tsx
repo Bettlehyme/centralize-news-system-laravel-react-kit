@@ -109,7 +109,7 @@ export default function Source({ source }: Props) {
 
     return (
         <>
-            <Head>
+            {/* <Head>
                    <title>{`Berita ${source} Terbaru - Centralize News`}</title>
                    <meta name="description" content={`Berita terbaru dari ${source}`} />
                    <link rel="canonical" href={`https://centralizenews.com/sources/${source}`} />
@@ -124,7 +124,7 @@ export default function Source({ source }: Props) {
                    <meta name="twitter:title" content={`Berita ${source} Terbaru - Centralize News`} />
                    <meta name="twitter:description" content={`Berita terbaru dari ${source}`}/>
                    <meta name="twitter:image" content="https://centralizenews.com/no-image.png" />
-                 </Head>
+                 </Head> */}
 
             <div
                 ref={containerRef}

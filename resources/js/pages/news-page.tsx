@@ -54,7 +54,7 @@ export default function NewsPage({ slug, canonicalUrl }: Props) {
 
   return (
     <div className="flex flex-col items-center pt-6 pb-24">
-      <Head>
+      {/* <Head>
         <title>{newsItem?.title ? `${newsItem.title} - Centralize News` : "Centralize News"}</title>
         <meta name="description" content={newsItem?.summary || ""} />
         <link rel="canonical" href={canonicalUrl ||'https://centralizenews.com'} />
@@ -69,7 +69,7 @@ export default function NewsPage({ slug, canonicalUrl }: Props) {
         <meta name="twitter:title" content={newsItem?.title ? `${newsItem.title} - Centralize News` : "Centralize News"} />
         <meta name="twitter:description" content={newsItem?.summary || ""}/>
         <meta name="twitter:image" content={newsItem?.image ? `${newsItem.image}` : "https://centralizenews.com/no-image.png"} />
-      </Head>
+      </Head> */}
 
       <div className="w-full max-w-md  lg:max-w-[60vw] mt-20">
         <FeedSingle key={newsItem.id} items={[newsItem]} />
