@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\News;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Str;
 use Spatie\Sitemap\SitemapGenerator;
 
 Route::get('/', function () {
@@ -28,9 +30,18 @@ Route::get('/sources/{source}', function ($source, Request $request) {
 })->name('source');
 
 Route::get('/news/title/{slug}', function ($slug, Request $request) {
+    $article = News::where('slug', $slug)->firstOrFail();
+
     return Inertia::render('news-page', [
         'slug' => $slug,
         'canonicalUrl' => url()->current(),
+        'seo' => [
+            'title' => $article->title,
+            'description' => Str::limit(strip_tags($article->content), 150),
+            'image' => $article->image_url ?? asset('cns-preview.png'),
+            'url' => url()->current(),
+        ],
+        'article' => $article, 
     ]);
 })->name('newsPage');
 
