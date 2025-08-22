@@ -47,7 +47,7 @@ export default function Feed({ items }: FeedProps) {
     if (diff < 60) return `${diff}d lalu`;
     if (diff < 3600) return `${Math.floor(diff / 60)}m lalu`;
     if (diff < 86400) return `${Math.floor(diff / 3600)}j lalu`;
-    return `${Math.floor(diff / 86400)} days ago`;
+    return `${Math.floor(diff / 86400)} hari lalu`;
   }
 
 
