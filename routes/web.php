@@ -22,10 +22,15 @@ Route::get('/sources', function () {
     );
 })->name('sources');
 
-Route::get('/sources/{source}', function ($source, Request $request) {
+Route::get('/sources/{source}', function ($source) {
     return Inertia::render('source', [
         'source' => $source,
-        'canonicalUrl' => url()->current(),
+        'seo' => [
+            'title' => "Berita {$source} Terbaru - Centralize News",
+            'description' => "Berita terbaru dari {$source}",
+            'url' => url()->current(),
+            'image' => asset('no-image.png'),
+        ]
     ]);
 })->name('source');
 
@@ -38,7 +43,7 @@ Route::get('/news/title/{slug}', function ($slug, Request $request) {
         'seo' => [
             'title' => $article->title,
             'description' => Str::limit(strip_tags($article->content), 150),
-            'image' => $article->image_url ?? asset('cns-preview.png'),
+            'image' => $article->image_url ?? asset('no-image.png'),
             'url' => url()->current(),
         ],
         'article' => $article, 
