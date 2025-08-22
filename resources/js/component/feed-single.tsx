@@ -24,18 +24,22 @@ export default function FeedSingle({ items }: FeedSingleProps) {
       alert("Sharing is not supported on this browser.");
     }
   };
-  const handleShareFeed = async (title: string, slug: string, url?: string) => {
-    let shareUrl = `/news/title/${encodeURIComponent(slug)}`;
-    if (navigator.share) {
-      try {
-        await navigator.share({ title, url: shareUrl });
-      } catch (err) {
-        console.error("Error sharing:", err);
-      }
-    } else {
-      alert("Sharing is not supported on this browser.");
+ const handleShareFeed = async (title: string) => {
+  const shareUrl = window.location.href; // current page URL
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title, url: shareUrl });
+    } catch (err) {
+      console.error("Error sharing:", err);
     }
-  };
+  } else {
+    // Fallback if Web Share API not supported
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      alert("Link copied to clipboard!");
+    });
+  }
+};
 
   function timeAgo(dateString: string | null | undefined): string {
     if (!dateString) return "";
@@ -126,7 +130,7 @@ export default function FeedSingle({ items }: FeedSingleProps) {
                           className="flex flex-col items-end space-y-2"
                         >
                           <motion.button
-                            onClick={() => handleShareFeed(post.title, post.slug, post.link)}
+                            onClick={() => handleShareFeed(post.title)}
                             className=" w-15 h-15 px-4 py-2 shadow "
                             whileHover={{ scale: 1.05, color: '#fff', border: 'none' }}
                             whileInView={{ scale: 1, opacity: 1, outline: 'none', borderRadius: '50%', border: 'none' }}

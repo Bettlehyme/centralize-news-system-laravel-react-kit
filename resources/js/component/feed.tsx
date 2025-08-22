@@ -175,15 +175,15 @@ export default function Feed({ items }: FeedProps) {
                     >
                       Read More
                     </Link>
-                    <Link
+                    <a
                       href={post.link}
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ color: 'oklch(62.3% 0.214 259.815)', fontWeight: '600' }}
-                      className="flex items-center text-sm text-blue-500 dark:text-blue-400 mt-1 gap-1"
+                      className="flex text-sm text-blue-500 dark:text-blue-400 mt-1 gap-1"
                     >
                       Full Article<SquareArrowOutUpRight size={15} />
-                    </Link>
+                    </a>
                   </div>
                 )}
               </footer>
