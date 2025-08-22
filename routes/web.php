@@ -29,7 +29,7 @@ Route::get('/sources/{source}', function ($source, Request $request) {
             'title' => "Berita {$source} Terbaru - Centralize News",
             'description' => "Berita terbaru dari {$source}",
             'url' => url()->current(),
-            'image' => asset('no-image.png'),
+            'image' => public_path('no-image.png'),
         ]
     ]);
 })->name('source');
@@ -43,7 +43,7 @@ Route::get('/news/title/{slug}', function ($slug, Request $request) {
         'seo' => [
             'title' => $article->title,
             'description' => Str::limit(strip_tags($article->summary), 150),
-            'image' => $article->image ?? asset('no-image.png'),
+            'image' => $article->image ?? public_path('no-image.png'),
             'url' => url()->current(),
         ],
         'article' => $article,
