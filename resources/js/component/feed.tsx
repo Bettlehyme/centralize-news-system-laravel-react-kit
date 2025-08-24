@@ -74,15 +74,16 @@ export default function Feed({ items }: FeedProps) {
                 <div className="w-full h-full relative overflow-hidden px-4 py-3">
                   <motion.div
                     className="absolute inset-0 z-0"
-                    initial={{ width: 0, backgroundColor: '#fff' }}
-                    whileInView={{ width: "100%", backgroundColor: post.color || '#ECB779' }}
-                    transition={{ duration: 2, ease: "easeInOut" }}
+                    initial={{ width: "100%", backgroundColor: post.color || '#ECB779' }}
+                    // whileInView={{ width: "100%", backgroundColor: post.color || '#ECB779' }}
+                    // transition={{ duration: 2, ease: "easeInOut" }}
                   />
 
                   <div className="flex flex-row items-center justify-between relative z-10">
                     <Link
                       href={`/sources/${encodeURIComponent(post.source!)}`}
                       className="decoration-black text-gray-900 dark:text-gray-200"
+                      preserveScroll preserveState
                     >
                       <p className="text-xl font-semibold text-gray-900 dark:text-gray-100">
                         {post.source || "News"}
@@ -172,6 +173,7 @@ export default function Feed({ items }: FeedProps) {
                       rel="noopener noreferrer"
                       style={{ color: 'oklch(62.3% 0.214 259.815)', fontWeight: '600' }}
                       className="text-sm text-blue-500 dark:text-blue-400 mt-1 inline-block"
+                      preserveScroll preserveState
                     >
                       Read More
                     </Link>

@@ -56,6 +56,7 @@ export default function Dock() {
                 aria-label={item.label}
                 aria-current={isActive ? 'page' : undefined}
                 className="flex items-center  justify-center w-full h-full no-underline"
+                preserveScroll preserveState
               >
                 {item.icon}
               </Link>

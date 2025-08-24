@@ -2,12 +2,14 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { Head } from "@inertiajs/react"; // ✅ Inertia Head
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Clapperboard, Cpu, HeartPulse, Landmark, Moon, Trophy, Users, Wallet } from "lucide-react";
 import Feed from "@/component/feed";
 import PulsingLogo from "@/component/pulsing-logo";
 import type { NewsItem } from "@/types/types";
 import Layout from "@/layout/layout";
 import ScrollToTopButton from "@/component/scroll-to-up-button";
+import ButtonGroup from "@/component/button-group";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function News() {
   const [items, setItems] = useState<NewsItem[]>([]);
@@ -18,13 +20,14 @@ export default function News() {
   const limit = 20;
   const startY = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [activeCategory, setActiveCategory] = useState<string>("");
 
   // Fetch news
   const fetchNewsPage = async (page: number, reset = false) => {
     setLoading(true);
     try {
       const res = await fetch(
-        `/api/news?page=${page}&limit=${limit}` // ✅ proxy through Laravel
+        `/api/news?category=${activeCategory}&page=${page}&limit=${limit}` // ✅ proxy through Laravel
       );
       const data: NewsItem[] = await res.json();
       setItems((prev) => (reset ? data : [...prev, ...data]));
@@ -96,6 +99,15 @@ export default function News() {
     };
   }, [pullDistance]);
 
+  useEffect(() => {
+    if (activeCategory) {
+      setItems([]);
+      setPage(1);
+      setHasMore(true);
+      fetchNewsPage(1, true);
+    }
+  }, [activeCategory]);
+
   // SEO metadata
   const latest = items.length > 0 ? items[0] : null;
   const latestTitle = latest ? latest.title : "Latest News";
@@ -150,7 +162,7 @@ export default function News() {
 
       <div
         ref={containerRef}
-        className="flex flex-col items-center pt-6 pb-24 transition-transform duration-200"
+        className="flex flex-col items-center pt-6 pb-24 transition-transform duration-200 "
         style={{ transform: `translateY(${pullDistance}px)` }}
       >
         {pullDistance > 0 && (
@@ -159,8 +171,38 @@ export default function News() {
           </div>
         )}
 
+
         <div className="w-full  mt-20">
-          <div className="overflow-auto p-4">
+          <AnimatePresence mode="wait">
+            {!loading && (
+              <motion.div
+                key="category-buttons"
+                className="flex justify-center w-full absolute sticky top-20 z-20"
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              >
+                <ButtonGroup
+                  items={[
+                    { label: "Muslim", value: "muslim", icon: <Moon size={16} /> },
+                    { label: "Politik", value: "politics", icon: <Landmark size={16} /> },
+                    { label: "Olahraga", value: "sports", icon: <Trophy size={16} /> },
+                    { label: "Entertainment", value: "entertainment", icon: <Clapperboard size={16} /> },
+                    { label: "Ekonomi", value: "economy", icon: <Wallet size={16} /> },
+                    { label: "Teknologi", value: "technology", icon: <Cpu size={16} /> },
+                    { label: "Kesehatan", value: "health", icon: <HeartPulse size={16} /> },
+                  ]}
+                  value={activeCategory}
+                  orientation="horizontal"
+                  defaultValue=''
+                  buttonClassName="uppercase text-xs font-semibold rounded-full"
+                  onChange={(val) => setActiveCategory(val)}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <div className="overflow-auto p-4 mt-5">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
               {items.map((news: any) => (
                 <Feed key={news.id} items={[news]} />
@@ -169,6 +211,7 @@ export default function News() {
           </div>
 
           {loading && (
+
             <PulsingLogo
               src={
                 document.documentElement.classList.contains("dark")
@@ -177,6 +220,7 @@ export default function News() {
               }
               size={90}
             />
+
           )}
           {!hasMore && <p className="text-center py-4">No more news</p>}
         </div>

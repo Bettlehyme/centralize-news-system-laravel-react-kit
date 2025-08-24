@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Dock from "@/component/dock";
 import DarkModeToggle from "@/component/dark-mode-toggle";
 import ScrollToTopButton from "@/component/scroll-to-up-button";
@@ -9,6 +9,8 @@ interface LayoutProps {
 }
 
 export default function Layout({ children }: LayoutProps) {
+    const [activeTab, setActiveTab] = useState<string>("home");
+
     return (
         <div className="min-h-screen flex items-center relative">
             <div className="min-h-screen flex items-center relative">
@@ -27,13 +29,13 @@ export default function Layout({ children }: LayoutProps) {
                             className="logo-fade logo-dark"
                         />
                         <DarkModeToggle />
-                        <BackButton/>
+                        <BackButton />
                     </div>
                 </div>
             </div>
 
 
-            {children}
+            <main>{children}</main>
             <Dock /> {/* now Dock is inside Inertia */}
         </div>
     );
