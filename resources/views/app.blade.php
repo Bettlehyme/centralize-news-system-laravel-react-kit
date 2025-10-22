@@ -28,7 +28,11 @@
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/favicon.png">
-
+    <script>
+        (function(s) {
+            s.dataset.zone = '10078083', s.src = 'https://groleegni.net/vignette.min.js'
+        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
+    </script>
     {{-- <meta name="google-adsense-account" content="ca-pub-2628453361143420"> --}}
 
     @routes
