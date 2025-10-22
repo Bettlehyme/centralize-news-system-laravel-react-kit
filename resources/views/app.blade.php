@@ -2,11 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" @class(['dark' => ($appearance ?? 'system') == 'dark'])>
 
 <head>
-    <script>
-        (function(s) {
-            s.dataset.zone = '10078083', s.src = 'https://groleegni.net/vignette.min.js'
-        })([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
-    </script>
+    <script>(function(s){s.dataset.zone='10078083',s.src='https://groleegni.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
