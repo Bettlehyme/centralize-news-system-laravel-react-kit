@@ -29,7 +29,7 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/favicon.png">
 
-    <meta name="google-adsense-account" content="ca-pub-2628453361143420">
+    {{-- <meta name="google-adsense-account" content="ca-pub-2628453361143420"> --}}
 
     @routes
     @viteReactRefresh
