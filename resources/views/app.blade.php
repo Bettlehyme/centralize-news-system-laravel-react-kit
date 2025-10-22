@@ -3,7 +3,12 @@
 
 <head>
     {{-- <script>(function(s){s.dataset.zone='10078083',s.src='https://groleegni.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script> --}}
-    <script src="https://fpyf8.com/88/tag.min.js" data-zone="179756" async data-cfasync="false"></script>
+    {{-- <script src="https://fpyf8.com/88/tag.min.js" data-zone="179756" async data-cfasync="false"></script> --}}
+    <script>(function(s){s.dataset.zone='10078471',s.src='https://groleegni.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <script>(function(s){s.dataset.zone='10078472',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <script>(function(s){s.dataset.zone='10078473',s.src='https://gizokraijaw.net/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    <script src="https://3nbf4.com/act/files/tag.min.js?z=10078475" data-cfasync="false" async></script>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
